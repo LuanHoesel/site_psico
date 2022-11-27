@@ -17,3 +17,9 @@ body.page-home main {
   width: 80px;
   height: auto;
 }
+
+body.page-login main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
