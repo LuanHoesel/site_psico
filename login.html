@@ -20,22 +20,16 @@
             <div class="card-body">
               <h5 class="card-title">Registre-se</h5>
 
-              <form action="/action_page.php" method="POST">
-                <label for="fname">Nome:</label><br />
-                <input type="text" id="fname" name="fname" placeholder="digite seu nome" maxlength="20" minlength="2"
-                  value="" /><br />
-                <label for="name">Sobrenome:</label><br />
-                <input type="text" id="name" name="name" placeholder="digite seu sobrenome" maxlength="50" minlength="2"
-                  value="" /><br /><br />
-                <label for="Email">Email:</label><br />
-                <input type="text" id="Email" placeholder="digite seu email" maxlength="50" minlength="2"
-                  value="" /><br />
-                <label for="data de nascimento">Data de Nascimento: </label><br />
-                <input type="date" id="data de nascimento" max="2022-01-31" min="1900-01-01" /><br />
-                <label for="sexo">Sexo:</label><br />
-                <input type="radio" id="masculino" name="masculino" value="" />Maculino<br />
-                <input type="radio" id="feminino" name="feminino" value="" />Feminino<br />
-                <input type="submit" value="Enviar" />
+              <form>
+                <div class="mb-3">
+                  <label for="nome" class="form-label">Nome Completo</label>
+                  <input type="text" class="form-control" id="nome" placeholder="digite seu nome">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="digite seu email">
+                </div>
+
               </form>
 
               <a href="agenda.html" class="btn btn-primary">Registrar</a>
