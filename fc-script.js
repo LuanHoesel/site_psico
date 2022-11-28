@@ -43,7 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         },
         eventClick: function (eventClickInfo) {
-            eventClickInfo.event.remove();
+            let conta = pegaContaStorage();
+            let title = conta.nome + ' - ' + conta.telefone;
+            if (eventClickInfo.event.title == title) {
+                eventClickInfo.event.remove();
+            }
         },
     });
     calendar.render();
