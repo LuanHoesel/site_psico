@@ -23,3 +23,7 @@ body.page-login main {
   display: flex;
   align-items: center;
 }
+
+.fc-timegrid-slot {
+  height: 50px !important;
+}

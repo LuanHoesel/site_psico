@@ -6,8 +6,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agenda</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+  <link href='fullcalendar/main.min.css' rel='stylesheet' />
+  <script src='fullcalendar/main.min.js'></script>
+  <script src='fullcalendar/pt-br.js'></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        selectable: true,
+        weekends: false,
+        themeSystem: 'bootstrap5',
+        initialView: 'timeGridWeek',
+        slotMinTime: '09:00:00',
+        slotMaxTime: '18:00:00',
+        slotDuration: '01:00:00',
+        eventStartEditable: true,
+        height: 'auto',
+        locale: 'pt-BR',
+        allDaySlot: false,
+        businessHours: [
+          {
+            daysOfWeek: [1, 2, 3, 4, 5],
+            startTime: '09:00',
+            endTime: '12:00',
+          }, {
+            daysOfWeek: [1, 2, 3, 4, 5],
+            startTime: '13:00',
+            endTime: '18:00',
+          },
+        ],
+        dateClick: function (info) {
+          if (info.date.getHours() == 12) return;
+          let events = calendar.getEvents();
+          events.forEach((e) => e.remove());
+          let nomeCliente = pegaContaStorage().nome;
+          calendar.addEvent({
+            title: nomeCliente,
+            start: info.dateStr
+          });
+        }
+      });
+      calendar.render();
+    });
+
+  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -33,19 +78,12 @@
       </div>
     </div>
   </nav>
-  <main>
+  <main class="py-5">
+
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-2 bg-secondary">
-          <h1 id="clienteNome"></h1>
-        </div>
-        <div class="col-12 col-md-10 bg-info bg-gradient">
-          <div class="d-flex justify-content-between">
-            <h1>Agende o seu horário</h1>
-            <h5 class="text-end">
-              Caso precise de ajuda entre em<br />contato com a gente
-            </h5>
-          </div>
+        <div class="col-12">
+          <div id='calendar'></div>
         </div>
       </div>
     </div>
@@ -58,9 +96,6 @@
     crossorigin="anonymous"></script>
 
   <script src="script.js"></script>
-  <script>
-    carregaAgenda();
-  </script>
 </body>
 
 </html>

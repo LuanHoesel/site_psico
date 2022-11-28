@@ -21,10 +21,3 @@ if (botaoEnviar) {
         window.location.href = window.location.href.replace('login', 'agenda')
     });
 }
-
-function carregaAgenda() {
-    let conta = pegaContaStorage();
-    if (conta.nome) {
-        clienteNome.innerText = conta.nome
-    }
-}
