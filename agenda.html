@@ -11,48 +11,6 @@
   <link href='fullcalendar/main.min.css' rel='stylesheet' />
   <script src='fullcalendar/main.min.js'></script>
   <script src='fullcalendar/pt-br.js'></script>
-  <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        selectable: true,
-        weekends: false,
-        themeSystem: 'bootstrap5',
-        initialView: 'timeGridWeek',
-        slotMinTime: '09:00:00',
-        slotMaxTime: '18:00:00',
-        slotDuration: '01:00:00',
-        eventStartEditable: true,
-        height: 'auto',
-        locale: 'pt-BR',
-        allDaySlot: false,
-        businessHours: [
-          {
-            daysOfWeek: [1, 2, 3, 4, 5],
-            startTime: '09:00',
-            endTime: '12:00',
-          }, {
-            daysOfWeek: [1, 2, 3, 4, 5],
-            startTime: '13:00',
-            endTime: '18:00',
-          },
-        ],
-        dateClick: function (info) {
-          if (info.date.getHours() == 12) return;
-          let events = calendar.getEvents();
-          events.forEach((e) => e.remove());
-          let nomeCliente = pegaContaStorage().nome;
-          calendar.addEvent({
-            title: nomeCliente,
-            start: info.dateStr
-          });
-        }
-      });
-      calendar.render();
-    });
-
-  </script>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -74,16 +32,22 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Agenda</a>
           </li>
+          <li class="nav-item ml-auto">
+            <a class="nav-link active" aria-current="page" href="login.html">Conta</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main class="py-5">
+  <main class="pb-5 pt-3">
 
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-3">
           <div id='calendar'></div>
+        </div>
+        <div class="col-12">
+          <buton class="btn btn-primary ml-auto d-block" id="botaoAgendar">Agendar</button>
         </div>
       </div>
     </div>
@@ -95,7 +59,12 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
 
+  <script src="fc-script.js"></script>
   <script src="script.js"></script>
+  <script>
+    carregaAgenda()
+    pegaEventos()
+  </script>
 </body>
 
 </html>

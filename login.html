@@ -16,18 +16,22 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-6 mx-auto">
-          <div class="card text-center">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Registre-se</h5>
+              <h5 class="card-title text-center">Registre-se</h5>
 
               <form>
                 <div class="mb-3">
-                  <label for="nome" class="form-label">Nome Completo</label>
+                  <label for="nome" class="form-label">Nome</label>
                   <input type="text" class="form-control" id="nome" placeholder="digite seu nome">
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">E-mail</label>
                   <input type="email" class="form-control" id="email" placeholder="digite seu email">
+                </div>
+                <div class="mb-3">
+                  <label for="telefone" class="form-label">Telefone</label>
+                  <input type="text" class="form-control" id="telefone" placeholder="digite seu telefone">
                 </div>
               </form>
 
@@ -46,6 +50,9 @@
     crossorigin="anonymous"></script>
 
   <script src="script.js"></script>
+  <script>
+    carregaLogin()
+  </script>
 </body>
 
 </html>
