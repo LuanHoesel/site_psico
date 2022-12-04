@@ -1,7 +1,5 @@
 let inputNome = document.getElementById('nome');
-let inputEmail = document.getElementById('email');
 let inputTelefone = document.getElementById('telefone');
-let inputSenha = document.getElementById('senha');
 let botaoEnviar = document.getElementById('botaoEnviar');
 let clienteNome = document.getElementById("clienteNome");
 
@@ -17,19 +15,16 @@ if (botaoEnviar) {
     botaoEnviar.addEventListener('click', () => {
         let conta = {
             nome: inputNome.value,
-            email: inputEmail.value,
             telefone: inputTelefone.value,
-            senha: inputSenha.value,
-        
         };
         if (contaValida(conta)) {
             salvaContaStorage(conta);
-            window.location.href = window.location.href.replace('login', 'agenda')
+            window.location.href = window.location.href.replace('entrar', 'agenda')
         }
     });
 }
 
-if(inputTelefone) {
+if (inputTelefone) {
     inputTelefone.addEventListener('keyup', (evento) => {
         inputTelefone.value = inputTelefone.value.replace(/[^0-9]+/g, '');
         evento.preventDefault();
@@ -39,23 +34,20 @@ if(inputTelefone) {
 
 function carregaAgenda() {
     let conta = pegaContaStorage();
-    if(!conta){
-        window.location.href = window.location.href.replace('agenda', 'login')
+    if (!conta) {
+        window.location.href = window.location.href.replace('agenda', 'entrar')
     }
-} 
-function carregaLogin() {
+}
+function carregaEntrar() {
     let conta = pegaContaStorage();
-    if(conta){
+    if (conta) {
         inputNome.value = conta.nome;
-        inputEmail.value = conta.email;
         inputTelefone.value = conta.telefone;
     }
 }
 function contaValida(conta) {
     let temNome = !!conta.nome;
     let temTelefone = !!conta.telefone;
-    let temEmail = !!conta.email;
-    let temSenha = !!conta.senha;
-    return temNome && temTelefone && temSenha && temEmail;
+    return temNome && temTelefone;
 
 }

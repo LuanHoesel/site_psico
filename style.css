@@ -18,14 +18,14 @@ body.page-home main {
   height: auto;
 }
 
-body.page-login main {
+body.page-entrar main {
   height: 100vh;
   display: flex;
   align-items: center;
 }
 
 .fc-timegrid-slot {
-  height: 40px !important;
+  height: 7vh !important;
 }
 
 .form-control:invalid {
