@@ -14,7 +14,7 @@ body.page-home main {
 }
 
 .navbar-logo {
-  width: 60px;
+  width: 80px;
   height: auto;
 }
 
@@ -26,4 +26,8 @@ body.page-login main {
 
 .fc-timegrid-slot {
   height: 40px !important;
+}
+
+.form-control:invalid {
+  border: 1px solid red;
 }
